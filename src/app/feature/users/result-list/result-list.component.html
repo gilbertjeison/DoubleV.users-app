@@ -1,0 +1,51 @@
+<div class="flex justify-center my-10">
+  <mat-card class="w-1/2 shadow-lg">
+    <mat-card-title>Resultados de la búsqueda: <span class="font-extrabold text-green-800">{{userName}}</span></mat-card-title>
+    <mat-card-content>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-raised-button color="primary" class="w-full" [routerLink]="['/users/search-panel/']">Volver</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8 mx-5">
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Login Column -->
+  <ng-container matColumnDef="login">
+    <mat-header-cell *matHeaderCellDef> Login </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.login}} </mat-cell>
+  </ng-container>
+
+  <!-- Type Column -->
+  <ng-container matColumnDef="type">
+    <mat-header-cell *matHeaderCellDef> Tipo </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+  </ng-container>
+
+  <!-- Url Column -->
+  <ng-container matColumnDef="html_url">
+    <mat-header-cell *matHeaderCellDef> Url </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a href="{{element.html_url}}" target="_blank">
+        {{element.html_url}}
+      </a>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Action Column -->
+  <ng-container matColumnDef="Opciones">
+    <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" (click)="goToProfile(element.login)">Ver perfil</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

@@ -1,0 +1,31 @@
+<div class="flex justify-center mt-10">
+  <mat-card class="w-1/2 shadow-lg">
+    <mat-card-title>Búsqueda de usuarios</mat-card-title>
+    <mat-card-subtitle>Escriba el nombre de usuario a buscar...</mat-card-subtitle>
+    <mat-card-content>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Nombre de usuario</mat-label>
+          <input matInput name="userNameT" id="userNameT" [(ngModel)]="userName" appUserNameValidation="doublevpartners" required minlength="4"  #userNameT="ngModel">
+          <mat-icon matSuffix>edit</mat-icon>
+        </mat-form-field>
+        <div *ngIf="userNameT.invalid && (userNameT.dirty || userNameT.touched)"
+              class="alert">
+
+            <div *ngIf="userNameT.errors?.['required']">
+              Name is required.
+            </div>
+            <div *ngIf="userNameT.errors?.['minlength']">
+              Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="userNameT.errors?.['invalidName']">
+              Name cannot be doublevpartners.
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button (click)="clearData()">Limpiar</button>
+      <button mat-raised-button color="primary" (click)="searchUsers()" [disabled]="userNameT.invalid">Buscar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+

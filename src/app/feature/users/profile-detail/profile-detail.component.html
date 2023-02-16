@@ -1,0 +1,28 @@
+<div class="flex justify-self-auto mt-10 ">
+  <mat-card class="w-1/2 shadow-lg mr-5">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{userProfile?.name}}</mat-card-title>
+      <mat-card-subtitle>{{userProfile?.location}}</mat-card-subtitle>
+    </mat-card-header>
+    <div class="flex justify-center items-center">
+      <img mat-card-lg-image src="{{userProfile?.avatar_url}}" alt="Photo of an user" >
+    </div>
+    <mat-card-content>
+      <p>
+        {{userProfile?.bio}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="w-1/2 shadow-lg">
+    <mat-card-title>Cantidad de seguidores</mat-card-title>
+    <mat-card-subtitle>Generados en código de barras</mat-card-subtitle>
+    <mat-card-content >
+      <ngx-barcode6 class="w-full flex justify-center"
+      [bc-format]="'CODE128'"
+      bc-value="{{followers}}"
+      [bc-display-value]="true">
+    </ngx-barcode6>
+    </mat-card-content>
+  </mat-card>
+</div>
