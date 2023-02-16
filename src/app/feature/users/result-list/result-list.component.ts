@@ -28,7 +28,6 @@ export class ResultListComponent implements OnInit {
         return this.usersService.getUsers(this.userName ?? '');
       })
     ).subscribe((res: UsersResponse) => {
-      console.log(res);
       this.dataSource = res.items.slice(0,10);
     } );
   }

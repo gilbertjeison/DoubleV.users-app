@@ -25,7 +25,6 @@ export class ProfileDetailComponent implements OnInit {
         return this.usersService.getUser(userlogin ?? '');
       })
     ).subscribe((res: UserProfile) => {
-      console.log(res);
       this.userProfile = res;
       this.followers = res?.followers;
     } );
